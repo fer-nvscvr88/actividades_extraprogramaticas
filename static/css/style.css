@@ -1,0 +1,405 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f5fb;
+    color: #292943;
+}
+
+header {
+    background: #6554c0;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+header h1 {
+    margin: 0 0 10px;
+}
+
+main {
+    width: 92%;
+    max-width: 1000px;
+    margin: 25px auto;
+}
+
+.calendario, .formulario, .lista-eventos {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 12px #00000010;
+}
+
+.controles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    background: #6554c0;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #4d3da6;
+}
+
+.dias-semana, .dias {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 5px;
+    margin-top: 15px;
+}
+
+.dias-semana div {
+    text-align: center;
+    font-weight: bold;
+    padding: 8px 0;
+}
+
+.dia {
+    min-height: 85px;
+    padding: 6px;
+    border: 1px solid #e5e2f2;
+    border-radius: 6px;
+    overflow-wrap: anywhere;
+}
+
+.hoy {
+    border: 2px solid #6554c0;
+}
+
+.evento-mini {
+    background: #e7e2ff;
+    color: #43358f;
+    border-radius: 4px;
+    padding: 4px;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+}
+
+input, select, textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font: inherit;
+}
+
+form button {
+    margin-top: 15px;
+}
+
+.evento-card {
+    padding: 12px;
+    border-left: 4px solid #6554c0;
+    background: #f8f7ff;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+@media (max-width: 500px) {
+    main {
+        width: 96%;
+    }
+
+    .calendario, .formulario, .lista-eventos {
+        padding: 10px;
+    }
+
+    .dia {
+        min-height: 60px;
+        padding: 3px;
+        font-size: 12px;
+    }
+
+    .evento-mini {
+        font-size: 10px;
+    }
+}
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #292943;
+
+    background-image: url("../images/Escritorio-escolar.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+.calendario,
+.formulario,
+.lista-eventos {
+    background-color: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+header {
+    background: rgba(101, 84, 192, 0.94);
+    border-radius: 12px;
+    margin: 20px auto;
+    max-width: 1000px;
+}
+
+
+/* ORGANIZACIÓN GENERAL */
+main {
+    width: 94%;
+    max-width: 1100px;
+    margin: 25px auto;
+
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 18px;
+    align-items: start;
+}
+
+/* TÍTULO PRINCIPAL */
+header {
+    width: 94%;
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 25px 15px;
+
+    text-align: center;
+    color: white;
+    background: rgba(101, 84, 192, 0.94);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px #00000020;
+}
+
+/* TARJETAS BLANCAS */
+.calendario,
+.formulario,
+.lista-eventos {
+    background: rgba(255, 255, 255, 0.94);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px #00000018;
+    margin: 0;
+}
+
+/* LISTA DE EVENTOS ABAJO */
+.lista-eventos {
+    grid-column: 1 / -1;
+}
+
+/* CALENDARIO */
+.dias-semana,
+.dias {
+    gap: 5px;
+}
+
+.dia {
+    min-height: 75px;
+    background: rgba(255, 255, 255, 0.85);
+    transition: background 0.2s;
+}
+
+.dia:hover {
+    background: #eee9ff;
+}
+
+/* FORMULARIO */
+.formulario input,
+.formulario select,
+.formulario textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d9d4e8;
+    border-radius: 7px;
+    margin-top: 5px;
+}
+
+.formulario button {
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* TARJETAS DE EVENTOS */
+.evento-card {
+    background: #f8f6ff;
+    border-left: 5px solid #8066e8;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 12px 0;
+}
+
+/* DISEÑO PARA CELULARES */
+@media (max-width: 700px) {
+    main {
+        grid-template-columns: 1fr;
+        width: 96%;
+    }
+
+    .lista-eventos {
+        grid-column: auto;
+    }
+
+    header {
+        width: 96%;
+    }
+
+    .calendario,
+    .formulario,
+    .lista-eventos {
+        padding: 12px;
+    }
+
+    .dia {
+        min-height: 55px;
+    }
+}
+
+
+/* PALETA ROSA Y CELESTE */
+:root {
+    --rosa: #D9799B;
+    --rosa-suave: #FBE5ED;
+    --rosa-hover: #BB5C80;
+
+    --celeste: #5B9FCB;
+    --celeste-suave: #DDF2FF;
+    --celeste-hover: #397FAE;
+
+    --fondo-tarjeta: rgba(255, 255, 255, 0.95);
+    --texto: #35465A;
+}
+
+/* FONDO GENERAL */
+body {
+    color: var(--texto);
+}
+
+/* ENCABEZADO ROSA */
+header {
+    background: rgba(217, 121, 155, 0.95);
+    color: white;
+    border-radius: 15px;
+}
+
+/* TARJETAS PRINCIPALES */
+.calendario,
+.formulario,
+.lista-eventos {
+    background: var(--fondo-tarjeta);
+    border-radius: 15px;
+}
+
+/* TÍTULOS */
+.calendario h2,
+.formulario h2,
+.lista-eventos h2 {
+    color: var(--rosa-hover);
+}
+
+/* BOTONES CELESTES */
+button {
+    background: var(--celeste);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: var(--celeste-hover);
+}
+
+/* BOTÓN ELIMINAR ROSA */
+.btn-eliminar {
+    background: var(--rosa);
+}
+
+.btn-eliminar:hover {
+    background: var(--rosa-hover);
+}
+
+/* DÍAS DE LA SEMANA */
+.dias-semana div {
+    background: var(--celeste-suave);
+    color: #315E7B;
+    border-radius: 5px;
+    padding: 8px 0;
+}
+
+/* CASILLAS DEL CALENDARIO */
+.dia {
+    background: #FFFFFF;
+    border: 1px solid #D9EAF5;
+    border-radius: 7px;
+}
+
+.dia:hover {
+    background: var(--celeste-suave);
+}
+
+/* DÍA ACTUAL */
+.dia.hoy {
+    border: 2px solid var(--rosa);
+    background: var(--rosa-suave);
+}
+
+/* EVENTOS DENTRO DEL CALENDARIO */
+.evento-mini {
+    background: var(--rosa-suave);
+    color: #91415F;
+    border-radius: 5px;
+    padding: 4px;
+}
+
+/* CAMPOS DEL FORMULARIO */
+.formulario input,
+.formulario select,
+.formulario textarea {
+    border: 1px solid #B8DDED;
+    border-radius: 7px;
+}
+
+.formulario input:focus,
+.formulario select:focus,
+.formulario textarea:focus {
+    outline: 2px solid var(--celeste);
+}
+
+/* TARJETAS DE PRÓXIMOS EVENTOS */
+.evento-card {
+    background: #F2F9FF;
+    border-left: 5px solid var(--rosa);
+    border-radius: 8px;
+    padding: 14px;
+}
+
+/* BOTÓN DEL FORMULARIO */
+.formulario button[type="submit"] {
+    background: var(--rosa);
+}
+
+.formulario button[type="submit"]:hover {
+    background: var(--rosa-hover);
+}
+
