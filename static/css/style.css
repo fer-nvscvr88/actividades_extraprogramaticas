@@ -166,17 +166,7 @@ header {
 }
 
 
-/* ORGANIZACIÓN GENERAL */
-main {
-    width: 94%;
-    max-width: 1100px;
-    margin: 25px auto;
 
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 18px;
-    align-items: start;
-}
 
 /* TÍTULO PRINCIPAL */
 header {
@@ -203,10 +193,6 @@ header {
     margin: 0;
 }
 
-/* LISTA DE EVENTOS ABAJO */
-.lista-eventos {
-    grid-column: 1 / -1;
-}
 
 /* CALENDARIO */
 .dias-semana,
@@ -249,31 +235,6 @@ header {
     margin: 12px 0;
 }
 
-/* DISEÑO PARA CELULARES */
-@media (max-width: 700px) {
-    main {
-        grid-template-columns: 1fr;
-        width: 96%;
-    }
-
-    .lista-eventos {
-        grid-column: auto;
-    }
-
-    header {
-        width: 96%;
-    }
-
-    .calendario,
-    .formulario,
-    .lista-eventos {
-        padding: 12px;
-    }
-
-    .dia {
-        min-height: 55px;
-    }
-}
 
 
 /* PALETA ROSA Y CELESTE */
@@ -402,4 +363,435 @@ button:hover {
 .formulario button[type="submit"]:hover {
     background: var(--rosa-hover);
 }
+
+
+.campo-foto {
+    margin: 15px 0;
+    padding: 15px;
+    background-color: #fff0f7;
+    border: 2px solid #cceeff;
+    border-radius: 14px;
+}
+
+.campo-foto label {
+    display: block;
+    margin: 10px 0 6px;
+    color: #70415d;
+    font-weight: bold;
+}
+
+.campo-foto input {
+    max-width: 100%;
+}
+
+.foto-evento {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    max-height: 250px;
+    object-fit: contain;
+    margin: 12px 0;
+    border-radius: 12px;
+    border: 2px solid #cceeff;
+}
+
+
+
+
+
+
+/* Panel de fotografías */
+.galeria-eventos {
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #fff0f7;
+    border: 2px solid #cceeff;
+    border-radius: 16px;
+}
+
+.galeria-eventos h2 {
+    color: #b34d85;
+    margin-top: 0;
+}
+
+.galeria-eventos p {
+    color: #555;
+}
+
+.campo-foto {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.campo-foto input {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+#vista-foto {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+
+
+
+/* Recuadro delicado para las fotos */
+.galeria-eventos {
+    background: linear-gradient(135deg, #fff0f7, #eaf8ff);
+    border: 2px solid #f3c4df;
+    border-radius: 18px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(180, 120, 160, 0.10);
+}
+
+.galeria-eventos h2 {
+    color: #c05b91;
+    margin-top: 0;
+}
+
+.galeria-eventos p {
+    color: #587d91;
+}
+
+.galeria-eventos label {
+    display: block;
+    color: #b34d85;
+    font-weight: bold;
+    margin: 12px 0 6px;
+}
+
+.galeria-eventos input {
+    display: block;
+    max-width: 100%;
+    color: #527b91;
+}
+
+.galeria-eventos img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #cceeff;
+    border-radius: 12px;
+}
+
+
+/* ===== DISTRIBUCIÓN FINAL DEL CALENDARIO ===== */
+
+main {
+    display: grid;
+    
+    gap: 30px;
+    align-items: start;
+}
+
+/* Fila superior: calendario y formulario */
+.calendario {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.formulario {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+/* Fila inferior: lista de eventos y fotos */
+.lista-eventos {
+    grid-column: 2;
+    grid-row: 2;
+    
+}
+
+.galeria-eventos {
+    grid-column: 2;
+    grid-row: 2;
+    min-width: 0;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #fff0f7, #eaf8ff);
+    border: 2px solid #f3c4df;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px #00000012;
+}
+
+.galeria-eventos h2 {
+    color: #c05b91;
+    margin-top: 0;
+}
+
+.galeria-eventos p {
+    color: #587d91;
+}
+
+.galeria-eventos img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #cceeff;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+
+/* ===== FONDO DE REGISTRO E INICIO DE SESIÓN ===== */
+
+body.pagina-acceso {
+    min-height: 100vh;
+    margin: 0;
+    padding: 35px 15px;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+        135deg,
+        #f9dce8 0%,
+        #e4f4ff 50%,
+        #d5edff 100%
+    );
+
+    font-family: Arial, sans-serif;
+    color: #46536b;
+}
+
+/* ===== TARJETA BLANCA ===== */
+
+.pagina-acceso .tarjeta-acceso {
+    width: 100%;
+    max-width: 460px;
+    box-sizing: border-box;
+    padding: 35px;
+
+    background: #ffffff;
+    border: 2px solid #f8d9e6;
+    border-radius: 24px;
+
+    box-shadow: 0 12px 35px rgba(81, 113, 150, 0.18);
+}
+
+/* ===== TÍTULOS ===== */
+
+.pagina-acceso .tarjeta-acceso h1 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #cf6391;
+    text-align: center;
+    font-size: 27px;
+}
+
+.pagina-acceso .tarjeta-acceso h2 {
+    margin-bottom: 10px;
+    color: #579fc9;
+    text-align: center;
+    font-size: 23px;
+}
+
+.pagina-acceso .tarjeta-acceso p {
+    line-height: 1.5;
+    text-align: center;
+    color: #68758a;
+}
+
+/* ===== ETIQUETAS ===== */
+
+.pagina-acceso .tarjeta-acceso label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 7px;
+
+    color: #49566d;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* ===== CASILLAS DE TEXTO ===== */
+
+.pagina-acceso .tarjeta-acceso input,
+.pagina-acceso .tarjeta-acceso select {
+    display: block;
+    width: 100%;
+    min-height: 45px;
+    box-sizing: border-box;
+    padding: 12px 14px;
+
+    background-color: #f8fbff;
+    color: #35445b;
+
+    border: 1.5px solid #c9e4f5;
+    border-radius: 10px;
+
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.pagina-acceso .tarjeta-acceso input:focus,
+.pagina-acceso .tarjeta-acceso select:focus {
+    border-color: #d977a0;
+    box-shadow: 0 0 0 3px rgba(217, 119, 160, 0.15);
+}
+
+/* ===== BOTÓN ===== */
+
+.pagina-acceso .tarjeta-acceso button {
+    display: block;
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+
+    background: linear-gradient(90deg, #d977a0, #e58eb0);
+    color: #ffffff;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+    box-shadow: 0 5px 12px rgba(217, 119, 160, 0.22);
+    transition: transform 0.2s, background 0.2s;
+}
+
+.pagina-acceso .tarjeta-acceso button:hover {
+    background: linear-gradient(90deg, #c9618d, #d977a0);
+    transform: translateY(-2px);
+}
+
+/* ===== ENLACES ===== */
+
+.pagina-acceso .tarjeta-acceso a {
+    color: #438fbd;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.pagina-acceso .tarjeta-acceso a:hover {
+    color: #cf6391;
+    text-decoration: underline;
+}
+
+/* ===== MENSAJES ===== */
+
+.pagina-acceso .tarjeta-acceso .mensaje {
+    padding: 12px;
+    border-radius: 10px;
+    background: #fff0f5;
+    color: #a83e6b;
+    border: 1px solid #f5c8da;
+}
+
+
+
+
+/* ===== DISEÑO CALENDARIO ESCOLAR ===== */
+
+body.pagina-calendario {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #fce4ec, #dff3ff);
+    color: #51445b;
+    min-height: 100vh;
+}
+
+/* Encabezado */
+.pagina-calendario header {
+    background: linear-gradient(135deg, #d977a0, #8dcce9);
+    color: white;
+    text-align: center;
+    padding: 28px 16px;
+    border-radius: 0 0 25px 25px;
+    box-shadow: 0 5px 18px #b77e9b30;
+}
+
+.pagina-calendario header h1 {
+    margin: 0 0 8px;
+    font-size: 30px;
+}
+
+.pagina-calendario header p {
+    margin: 0;
+    color: white;
+}
+
+/* Tarjetas principales */
+.pagina-calendario .calendario,
+.pagina-calendario .formulario,
+.pagina-calendario .lista-eventos {
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    padding: 22px;
+    margin-bottom: 22px;
+    box-shadow: 0 6px 22px #9c789b18;
+}
+
+/* Títulos */
+.pagina-calendario h2,
+.pagina-calendario h3 {
+    color: #c65f8d;
+}
+
+/* Botones */
+.pagina-calendario button {
+    background: #d977a0;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 11px 17px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.pagina-calendario button:hover {
+    background: #bd5d87;
+    transform: translateY(-2px);
+}
+
+.pagina-calendario #anterior,
+.pagina-calendario #siguiente {
+    background: #79bfe0;
+    color: white;
+}
+
+/* Campos de los formularios */
+.pagina-calendario input,
+.pagina-calendario select,
+.pagina-calendario textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    margin: 6px 0 14px;
+    border: 1px solid #b9def4;
+    border-radius: 11px;
+    background: #fbfdff;
+    color: #51445b;
+    font: inherit;
+}
+
+.pagina-calendario input:focus,
+.pagina-calendario select:focus,
+.pagina-calendario textarea:focus {
+    outline: none;
+    border-color: #d977a0;
+    box-shadow: 0 0 0 3px #fce4ec;
+}
+
+/* Días de la semana */
+.pagina-calendario #dias {
+    gap: 7px;
+}
+
+
+
+
+
 

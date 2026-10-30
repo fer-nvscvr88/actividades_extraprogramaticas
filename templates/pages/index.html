@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario Escolar</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="pagina-calendario">
+
+    <main>
+
+        <!-- ENCABEZADO DEL COLEGIO ARRIBA -->
+        <header class="encabezado-colegio">
+            <h1>🏫 Colegio San Lorenzo</h1>
+            <h2>📅 Calendario Escolar</h2>
+            <p>Todos nuestros eventos y actividades en un solo lugar</p>
+        </header>
+
+        <!-- CALENDARIO Y FORMULARIO -->
+        <div class="fila-principal">
+
+            <!-- CALENDARIO MENSUAL -->
+            <section class="calendario">
+
+                <div class="controles">
+                    <button id="anterior" type="button">❮</button>
+                    <h2 id="mes-anio"></h2>
+                    <button id="siguiente" type="button">❯</button>
+                </div>
+
+                <div class="dias-semana">
+                    <div>Lun</div>
+                    <div>Mar</div>
+                    <div>Mié</div>
+                    <div>Jue</div>
+                    <div>Vie</div>
+                    <div>Sáb</div>
+                    <div>Dom</div>
+                </div>
+
+                <div id="dias" class="dias"></div>
+
+            </section>
+
+            <!-- FORMULARIO DE EVENTOS -->
+            <section class="formulario">
+
+                <h2>🌸 Agregar evento</h2>
+
+                <form id="form-evento">
+
+                    <label for="titulo">Nombre del evento</label>
+                    <input id="titulo" type="text"
+                        placeholder="Ej. Feria científica" required>
+
+                    <label for="fecha">Fecha</label>
+                    <input id="fecha" type="date" required>
+
+                    <label for="hora">Hora</label>
+                    <input id="hora" type="time" required>
+
+                    <label for="categoria">Categoría</label>
+                    <select id="categoria">
+                        <option>Actividad</option>
+                        <option>Reunión</option>
+                        <option>Prueba</option>
+                        <option>Celebración</option>
+                        <option>Deporte</option>
+                    </select>
+
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion"
+                        placeholder="Detalles del evento"></textarea>
+
+                    <button type="submit">Agregar evento</button>
+
+                </form>
+
+            </section>
+
+        </div>
+
+        <!-- PRÓXIMOS EVENTOS Y FOTOS -->
+        <div class="fila-inferior">
+
+            <section class="lista-eventos">
+                <h2>📅 Próximos eventos</h2>
+                <div id="lista"></div>
+            </section>
+
+            <section class="galeria-eventos">
+
+                <h2>📸 Fotos de eventos</h2>
+                <p>¡Guarda los recuerdos de nuestro colegio!</p>
+
+                <label for="foto-camara">📷 Sacar una foto</label>
+                <input type="file" id="foto-camara"
+                    accept="image/*" capture="environment">
+
+                <label for="foto-archivo">🖼️ Subir una imagen</label>
+                <input type="file" id="foto-archivo"
+                    accept="image/*">
+
+                <img id="vista-foto"
+                    alt="Vista previa de la foto"
+                    style="display:none;">
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

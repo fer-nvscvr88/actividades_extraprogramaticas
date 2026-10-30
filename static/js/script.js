@@ -4,6 +4,76 @@ const mesAnio = document.getElementById("mes-anio");
 const formulario = document.getElementById("form-evento");
 const lista = document.getElementById("lista");
 
+const fotoCamara = document.getElementById("foto-camara");
+const fotoArchivo = document.getElementById("foto-archivo");
+const vistaFoto = document.getElementById("vista-foto");
+
+let imagenEvento = "";
+
+function procesarFoto(archivo) {
+    if (!archivo) return;
+
+    if (!archivo.type.startsWith("image/")) {
+        alert("Selecciona un archivo de imagen.");
+        return;
+    }
+
+    const lector = new FileReader();
+
+    lector.onload = function () {
+        const imagen = new Image();
+
+        imagen.onload = function () {
+            const maximo = 1000;
+            const escala = Math.min(
+                1,
+                maximo / Math.max(imagen.width, imagen.height)
+            );
+
+            const canvas = document.createElement("canvas");
+            canvas.width = Math.round(imagen.width * escala);
+            canvas.height = Math.round(imagen.height * escala);
+
+            const contexto = canvas.getContext("2d");
+            contexto.drawImage(
+                imagen, 0, 0, canvas.width, canvas.height
+            );
+
+            imagenEvento = canvas.toDataURL("image/jpeg", 0.7);
+
+            vistaFoto.src = imagenEvento;
+            vistaFoto.style.display = "block";
+        };
+
+        imagen.onerror = function () {
+            alert("No se pudo abrir esa imagen. Prueba con otra.");
+        };
+
+        imagen.src = lector.result;
+    };
+
+    lector.onerror = function () {
+        alert("No se pudo leer el archivo.");
+    };
+
+    lector.readAsDataURL(archivo);
+}
+
+fotoCamara.addEventListener("change", function () {
+    if (this.files[0]) {
+        fotoArchivo.value = "";
+        procesarFoto(this.files[0]);
+    }
+});
+
+fotoArchivo.addEventListener("change", function () {
+    if (this.files[0]) {
+        fotoCamara.value = "";
+        procesarFoto(this.files[0]);
+    }
+});
+
+
 let fechaActual = new Date();
 
 let eventos = JSON.parse(
@@ -103,6 +173,17 @@ function mostrarEventos() {
         const descripcion = document.createElement("p");
         descripcion.textContent = e.descripcion || "";
 
+        
+        let fotoTarjeta = null;
+
+        if (e.imagen) {
+        fotoTarjeta = document.createElement("img");
+        fotoTarjeta.src = e.imagen;
+        fotoTarjeta.alt = "Foto del evento: " + e.titulo;
+        fotoTarjeta.className = "foto-evento";
+}
+
+
         const botonEliminar = document.createElement("button");
         botonEliminar.textContent = "🗑️ Eliminar evento";
         botonEliminar.className = "btn-eliminar";
@@ -120,7 +201,13 @@ function mostrarEventos() {
             }
         });
 
-        tarjeta.append(titulo, detalles, descripcion, botonEliminar);
+        tarjeta.append(titulo, detalles, descripcion);
+
+        if (fotoTarjeta) {
+    tarjeta.appendChild(fotoTarjeta);
+}
+
+    tarjeta.appendChild(botonEliminar);
         lista.appendChild(tarjeta);
     });
 }
@@ -144,7 +231,8 @@ formulario.addEventListener("submit", (e) => {
         fecha: document.getElementById("fecha").value,
         hora: document.getElementById("hora").value,
         categoria: document.getElementById("categoria").value,
-        descripcion: document.getElementById("descripcion").value.trim()
+        descripcion: document.getElementById("descripcion").value.trim(),
+        imagen: imagenEvento
     };
 
     if (!evento.titulo || !evento.fecha || !evento.hora) {
@@ -159,7 +247,81 @@ formulario.addEventListener("submit", (e) => {
     mostrarCalendario();
     mostrarEventos();
     formulario.reset();
+
+
+    imagenEvento = "";
+    vistaFoto.src = "";
+    vistaFoto.style.display = "none";
+
+    fotoCamara.value = "";
+    fotoArchivo.value = "";
 });
 
 mostrarCalendario();
 mostrarEventos();
+
+
+
+function mostrarAviso(mensaje) {
+    let aviso = document.getElementById("aviso-evento");
+
+    if (!aviso) {
+        aviso = document.createElement("div");
+        aviso.id = "aviso-evento";
+
+        aviso.style.backgroundColor = "#dff3ff";
+        aviso.style.color = "#24516b";
+        aviso.style.padding = "15px";
+        aviso.style.margin = "15px";
+        aviso.style.borderRadius = "12px";
+        aviso.style.border = "2px solid #a8dcf5";
+
+        document.body.prepend(aviso);
+    }
+
+    aviso.textContent = "📢 " + mensaje;
+
+    const boton = document.createElement("button");
+    boton.textContent = "✖";
+    boton.style.marginLeft = "12px";
+    boton.addEventListener("click", cerrarAviso);
+
+    aviso.appendChild(boton);
+}
+
+function cerrarAviso() {
+    const aviso = document.getElementById("aviso-evento");
+
+    if (aviso) {
+        aviso.remove();
+    }
+}
+
+function revisarEventosProximos() {
+    const ahora = new Date();
+
+    const manana = new Date(ahora);
+    manana.setDate(manana.getDate() + 1);
+
+    const fechaManana = [
+        manana.getFullYear(),
+        String(manana.getMonth() + 1).padStart(2, "0"),
+        String(manana.getDate()).padStart(2, "0")
+    ].join("-");
+
+    const proximos = eventos.filter(
+        evento => evento.fecha === fechaManana
+    );
+
+    if (proximos.length > 0) {
+        const nombres = proximos
+            .map(evento => evento.titulo)
+            .join(", ");
+
+        mostrarAviso(
+            "¡Mañana tienes un evento escolar! " + nombres
+        );
+    }
+}
+
+revisarEventosProximos();

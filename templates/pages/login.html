@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesión - Colegio San Lorenzo</title>
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="pagina-acceso">
+
+    <main class="tarjeta-acceso">
+        <h1>🏫 Colegio San Lorenzo</h1>
+        <h2>Inicio de sesión</h2>
+        <p>Ingresa tus datos para acceder al calendario escolar.</p>
+
+        {% with mensajes = get_flashed_messages() %}
+            {% for mensaje in mensajes %}
+                <p class="mensaje">{{ mensaje }}</p>
+            {% endfor %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('main.login') }}">
+            <label>RUT o correo electrónico</label>
+            <input type="text" name="identificador" required>
+
+            <label>Contraseña</label>
+            <input type="password" name="contrasena" required>
+
+            <button type="submit">Ingresar</button>
+        </form>
+
+        <p>¿No tienes cuenta?
+            <a href="{{ url_for('main.registro') }}">Regístrate aquí</a>
+        </p>
+    </main>
+
+</body>
+</html>
